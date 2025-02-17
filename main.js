@@ -1,12 +1,11 @@
 let board = Array(9).fill(null);
 let isXNext = true;
 let isAgainstComputer = false;
-let history = []; // Stores previous board states
+let history = []; 
 let isHumanSelected = true; 
 const cursor = document.querySelector(".custom-cursor");
 const boardTracking = document.querySelector(".board");
 
-// Track mouse movement and update cursor position
 document.addEventListener("mousemove", (e) => {
     gsap.to(cursor, { 
         x: e.clientX, 
@@ -16,7 +15,6 @@ document.addEventListener("mousemove", (e) => {
     });
 });
 
-// Show cursor only when on board
 boardTracking.addEventListener("mouseenter", () => {
     gsap.to(cursor, { opacity: 1, scale: 1, duration: 0.2 });
     document.body.style.cursor = "none"; 
@@ -164,7 +162,6 @@ function toggleGameMode() {
     isHumanSelected = !isHumanSelected; 
     isAgainstComputer = !isHumanSelected; 
 
-    // Animate UI toggle
     gsap.to(".toggle-circle", { x: isHumanSelected ? "0%" : "100%", duration: 0.3, ease: "linear" });
 
     gsap.to("#toggle-item1", { 
