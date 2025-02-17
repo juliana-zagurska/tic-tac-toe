@@ -5,39 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP -->
 </head>
 <body>
-    <div class="intro-bg"></div>
-    <img src="./assets/pencil.png" alt="Pencil Cursor" class="custom-cursor">
-    <div class="running-line">
-        <div class="running-line-content">
-            <p>Welcome to Tic-Tac-Toe! Enjoy the game. </p>
+    <div class="main-screen"> 
+        <div class="intro-bg"></div>
+        <img src="pencil.png" alt="Pencil Cursor" class="custom-cursor">
+        <div class="running-line">
+            <div class="running-line-content">
+                <p>Welcome to Tic-Tac-Toe! Enjoy the game. </p>
+            </div>
         </div>
-    </div>
-    <div class="mode-text">
-        <label for="mode">Choose Opponent</label>
-    </div>
-    <div class="game-mode-toggle">
-        <div class="toggle-item" id="toggle-item1">
-            <img src="./assets/human-icon.png" alt="Human" class="mode-icon">
-            <p>Human</p>
+        <div class="mode-text">
+            <label for="mode">Choose Opponent</label>
         </div>
-        <div class="toggle-switch" onclick="toggleGameMode()">
-            <div class="toggle-circle"></div>
+        <div class="game-mode-toggle">
+            <div class="toggle-item" id="toggle-item1">
+                <img src="human-icon.png" alt="Human" class="mode-icon">
+                <p>Human</p>
+            </div>
+            <div class="toggle-switch" onclick="toggleGameMode()">
+                <div class="toggle-circle"></div>
+            </div>
+            <div class="toggle-item" id="toggle-item2">
+                <img src="computer-icon.png" alt="Computer" class="mode-icon">
+                <p>Computer</p>
+            </div>
         </div>
-        <div class="toggle-item" id="toggle-item2">
-            <img src="./assets/computer-icon.png" alt="Computer" class="mode-icon">
-            <p>Computer</p>
-        </div>
+            <div class="board"></div>
+            <div class="game-status"><p id="status"></p></div>
+            <div class="button-container">
+                <button id="reset-btn" onclick="resetGame()">Reset</button>
+                <button id="undo-btn" onclick="undoMove()">Undo Move</button>
+            </div>
     </div>
-    <div class="board"></div>
-        <p id="status"></p>
-    <div class="button-container">
-        <button id="reset-btn" onclick="resetGame()">Reset</button>
-        <button id="undo-btn" onclick="undoMove()">Undo Move</button>
-    </div>
-
     <script src="main.js"></script>
     <script>
         const container = document.querySelector(".running-line");
