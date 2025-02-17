@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> <!-- GSAP -->
+</head>
+<body>
+    <div class="intro-bg"></div>
+    <img src="./assets/pencil.png" alt="Pencil Cursor" class="custom-cursor">
+    <div class="running-line">
+        <div class="running-line-content">
+            <p>Welcome to Tic-Tac-Toe! Enjoy the game. </p>
+        </div>
+    </div>
+    <div class="mode-text">
+        <label for="mode">Choose Opponent</label>
+    </div>
+    <div class="game-mode-toggle">
+        <div class="toggle-item" id="toggle-item1">
+            <img src="./assets/human-icon.png" alt="Human" class="mode-icon">
+            <p>Human</p>
+        </div>
+        <div class="toggle-switch" onclick="toggleGameMode()">
+            <div class="toggle-circle"></div>
+        </div>
+        <div class="toggle-item" id="toggle-item2">
+            <img src="./assets/computer-icon.png" alt="Computer" class="mode-icon">
+            <p>Computer</p>
+        </div>
+    </div>
+    <div class="board"></div>
+    <p id="status"></p>
+    <div class="button-container">
+        <button id="reset-btn" onclick="resetGame()">reset</button>
+        <button id="undo-btn" onclick="undoMove()">undo move</button>
+    </div>
+
+    <script src="main.js"></script>
+   <script>
+        const container = document.querySelector(".running-line");
+        const content = document.querySelector(".running-line-content");
+        const text = content.innerHTML;
+
+        const repeatCount = Math.ceil(window.innerWidth / content.offsetWidth) + 4;
+        content.innerHTML = new Array(repeatCount).fill(text).join("");
+
+        // Intro Animation
+        gsap.timeline()
+            .to(".intro-bg", { top: "0%", duration: .5, ease: "linear"})
+            .from(".running-line", 1, { x: "-10%",  opacity:0})
+            .from(".mode-text", { y: "10%", opacity: 0, scale: 0.75, duration: 0.5, ease: "power2.out" },"<")
+            .to(".running-line-content", { x: "-50%",  duration: 10,ease: "linear", repeat: -1})
+            .from("#toggle-item1", .25, { opacity:0, scale:2},"<")
+            .from("#toggle-item2", .25, { opacity:0, scale:2},"<.25")
+            .from(".toggle-switch", .25, { opacity:0},"<.25")
+            .fromTo(".toggle-circle", .2, { opacity:0, x: "70%", ease: "linear"},{ opacity:1, x: "0%"},"<")
+            .to("#toggle-item1", { scale:1.05})
+            .to("#toggle-item2", { scale:.95, opacity:.5},"<")
+            .from(["#status", "#reset-btn", "#undo-btn"], { y: 100, opacity: 0, stagger: 0.2, ease: "power2.out" }, "<")
+    </script>
+</body>
+</html>
