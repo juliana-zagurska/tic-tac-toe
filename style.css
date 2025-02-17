@@ -12,6 +12,14 @@ body {
     overflow-y: auto; 
     cursor: auto;
 }
+.main-screen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.game-status{
+    margin-top: 30px;
+}
 .custom-cursor {
     width: 40px; 
     height: auto;
@@ -199,7 +207,7 @@ body {
     }
 
     .game-mode-toggle {
-        flex-direction: column;
+        flex-direction: row;
         gap: 10px;
     }
 
